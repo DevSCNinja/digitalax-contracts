@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-
+// Created by justin
 pragma solidity 0.6.12;
 
 import "@openzeppelin/contracts/GSN/Context.sol";
@@ -19,6 +19,7 @@ contract DigitalaxAuction is Context, ReentrancyGuard {
 
     /// @notice Event emitted only on construction. To be used by indexers
     event DigitalaxAuctionContractDeployed();
+
 
     event PauseToggled(
         bool isPaused
@@ -105,11 +106,13 @@ contract DigitalaxAuction is Context, ReentrancyGuard {
         uint256 lastBidTime;
     }
 
-    /// @notice Garment ERC721 Token ID -> Auction Parameters
-    mapping(uint256 => Auction) public auctions;
 
     /// @notice Garment ERC721 Token ID -> highest bidder info (if a bid has been received)
     mapping(uint256 => HighestBid) public highestBids;
+
+    /// @notice Garment ERC721 Token ID -> Auction Parameters
+    mapping(uint256 => Auction) public auctions;
+
 
     /// @notice Garment ERC721 NFT - the only NFT that can be auctioned in this contract
     IDigitalaxGarmentNFT public garmentNft;
